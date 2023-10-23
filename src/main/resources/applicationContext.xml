@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:property-placeholder location= "application.properties"/>
+
+    <!--    bean - obektisin tuzuu uchun paydalanat-->
+    <bean id="student"
+          class="org.peaksoft.model.Student"/>
+
+    <bean id="teacher"
+          class="org.peaksoft.model.Teacher"/>
+
+    <bean id="university"
+          class="org.peaksoft.model.University">
+        <property name="student" ref="student"/>
+        <property name="teacher" ref="teacher"/>
+        <property name="name" value="${university.name}"/>
+        <property name="countOfStudent" value="${university.countOfStudent}"/>
+        <property name="yearOfRelaese" value="${university.yearOfRelaese}"/>
+
+    </bean>
+
+
+    <!--    DI с констуруктором-->
+
+    <!--    <bean id="university"-->
+    <!--          class="org.peaksoft.model.University">-->
+    <!--        <constructor-arg ref="student"/>-->
+    <!--        <constructor-arg ref="teacher"/>-->
+
+    <!--    </bean>-->
+
+</beans>
